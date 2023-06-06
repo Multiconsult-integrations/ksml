@@ -33,6 +33,12 @@ stages:
       inputs:
         command: buildAndPush
         repository: $(imageRepository)
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'acrmulticonsultdev'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
